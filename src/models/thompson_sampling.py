@@ -50,7 +50,9 @@ class ThompsonSampling(object):
 	# computes the cumulative regret
 	def regret(self):
 		max_probability = max(self.bandits.true_probabilities)
-		return (max_probability - array(self.choices.astype(int))).cumsum()
+		probabilities = array(self.bandits.true_probabilities)
+		choices = array(self.choices)
+		return (max_probability - probabilities[choices.astype(int)]).cumsum()
 
 	# return a list containing probabilities of choosing the best arm
 	def prob_best_arm(self):
