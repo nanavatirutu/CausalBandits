@@ -4,6 +4,7 @@ from torch import tensor
 class Bandits(object):
 	def __init__(self, true_probabilities):
 		self.true_probabilities = true_probabilities
+		self.best = self.true_probabilities.index(max(self.true_probabilities))  # get the best arm
 
 	# action of pulling each slot machine based on true probability of each bandit
 	def pull(self, i):
